@@ -37,8 +37,10 @@ public class PlayerMotor : MonoBehaviour {
 		beforePosition = transform.position;
 
 		_dir.y = 0f;
-		Quaternion _dirQ = Quaternion.LookRotation (_dir);
-		transform.rotation = Quaternion.Slerp (transform.rotation, _dirQ, 5f * Time.deltaTime);
+		if (_dir != Vector3.zero) {
+			Quaternion _dirQ = Quaternion.LookRotation (_dir);
+			transform.rotation = Quaternion.Slerp (transform.rotation, _dirQ, 5f * Time.deltaTime);
+		}
 	}
 
 	void Update(){
